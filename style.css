@@ -125,7 +125,7 @@ h2 {
   position: relative;
   overflow: hidden;
   background: 
-    linear-gradient(135deg, rgba(10, 10, 15, 0.8) 0%, rgba(10, 10, 15, 0.9) 100%),
+    linear-gradient(135deg, rgba(10, 10, 15, 0.8) 0%, rgba(10, 10, 15, 0.5) 100%),
     url('imagenweb.png');
   background-size: cover;
   background-position: center;
