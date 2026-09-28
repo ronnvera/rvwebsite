@@ -45,9 +45,21 @@ const ENTRY_ASUNTO = 'entry.901875294';
 const ENTRY_MENSAJE = 'entry.1853561981';
 
 const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
 
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  // 🛡️ ANTI-SPAM: si el honeypot está lleno, es un bot
+  const honeypot = document.getElementById('website');
+  if (honeypot && honeypot.value) {
+    console.warn('🤖 Bot detectado por honeypot');
+    // Fingimos éxito para engañar al bot
+    formMessage.classList.add('visible');
+    contactForm.reset();
+    setTimeout(() => formMessage.classList.remove('visible'), 6000);
+    return;
+  }
 
   const nombre = document.getElementById('nombre').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -82,8 +94,10 @@ contactForm.addEventListener('submit', (e) => {
     body: formData
   })
     .then(() => {
-      alert('✅ ¡Mensaje enviado! Te responderé pronto.');
+      // 🎯 MENSAJE ELEGANTE en vez de alert
+      formMessage.classList.add('visible');
       contactForm.reset();
+      setTimeout(() => formMessage.classList.remove('visible'), 6000);
     })
     .catch(err => {
       console.error('Error:', err);
@@ -93,6 +107,16 @@ contactForm.addEventListener('submit', (e) => {
       btn.disabled = false;
       btn.textContent = textoOriginal;
     });
+});
+
+// Ocultar mensaje de éxito al empezar a escribir de nuevo
+['nombre', 'email', 'asunto', 'mensaje'].forEach(id => {
+  const input = document.getElementById(id);
+  if (input && formMessage) {
+    input.addEventListener('input', () => {
+      formMessage.classList.remove('visible');
+    });
+  }
 });
 
 // ===== ANIMACIONES AL HACER SCROLL =====
@@ -126,4 +150,3 @@ document.querySelectorAll('.project-link').forEach(link => {
     }
   });
 });
-

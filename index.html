@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RV web site | Desarrollador Web</title>
   
+  <!-- 👇 FAVICON -->
+  <link rel="icon" type="image/png" href="logotransparente.png">
+  <link rel="apple-touch-icon" href="logotransparente.png">
+  
   <!-- CSS separado -->
   <link rel="stylesheet" href="style.css">
   
@@ -17,9 +21,9 @@
   <header class="navbar">
     <nav class="nav-container">
       <a href="#inicio" class="logo">
-  <img src="logotransparente.png" alt="RV Web Site" class="logo-img">
-  <span class="logo-text">Web Site</span>
-</a>
+        <img src="logotransparente.png" alt="RV Web Site" class="logo-img">
+        <span class="logo-text">Web Site</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#sobre-mi">Sobre mí</a></li>
         <li><a href="#servicios">Servicios</a></li>
@@ -224,7 +228,26 @@ const ronny = {
   </li>
 </ul>
       </div>
+
+      <!-- 🎯 MENSAJE DE ÉXITO -->
+      <div class="form-message" id="formMessage">
+        <div class="form-message-content">
+          <span class="form-message-icon">✓</span>
+          <div>
+            <strong class="form-message-title">¡Mensaje enviado!</strong>
+            <p class="form-message-text">Gracias por escribirme. Te responderé en menos de 24 horas.</p>
+          </div>
+        </div>
+      </div>
+
       <form class="contact-form" id="contactForm">
+
+        <!-- 🛡️ HONEYPOT ANTI-SPAM (invisible para humanos) -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">No rellenar</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
         <div class="form-row">
           <div>
             <label for="nombre">Nombre</label>
