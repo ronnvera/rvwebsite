@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -73,10 +74,6 @@ h2 {
   transition: transform 0.2s;
 }
 
-.logo-img:hover {
-  transform: scale(1.05);
-}
-
 .logo-text {
   font-family: monospace;
   font-size: 0.7rem;
@@ -97,10 +94,6 @@ h2 {
   font-size: 0.875rem;
   color: #94a3b8;
   transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: #E8501E;
 }
 
 .menu-btn {
@@ -231,13 +224,9 @@ h2 {
   border-radius: 9999px;
   font-weight: 600;
   font-size: 0.875rem;
-  transition: transform 0.2s;
+  transition: transform 0.2s, background-color 0.2s;
   border: none;
   cursor: pointer;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -250,12 +239,7 @@ h2 {
   border-radius: 9999px;
   font-weight: 600;
   font-size: 0.875rem;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.btn-secondary:hover {
-  color: #E8501E;
-  border-color: #E8501E;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
 }
 
 /* ===== ABOUT ===== */
@@ -294,12 +278,6 @@ h2 {
   font-size: 0.75rem;
   color: #94a3b8;
   transition: all 0.2s;
-}
-
-.skills span:hover {
-  border-color: #E8501E;
-  color: #E8501E;
-  transform: translateY(-2px);
 }
 
 .code-block {
@@ -356,11 +334,6 @@ h2 {
   transition: all 0.2s;
 }
 
-.service-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(232, 80, 30, 0.5);
-}
-
 .service-icon {
   display: inline-flex;
   align-items: center;
@@ -407,11 +380,6 @@ h2 {
   background: rgba(255, 255, 255, 0.03);
   overflow: hidden;
   transition: all 0.2s;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(232, 80, 30, 0.5);
 }
 
 .project-image {
@@ -463,10 +431,6 @@ h2 {
   font-weight: 600;
   font-size: 0.875rem;
   color: #E8501E;
-}
-
-.project-link:hover {
-  text-decoration: underline;
 }
 
 /* ===== TESTIMONIALS ===== */
@@ -566,10 +530,6 @@ h2 {
   border-radius: 0.75rem;
   font-size: 0.875rem;
   transition: border-color 0.2s;
-}
-
-.contact-details a:hover {
-  border-color: #E8501E;
 }
 
 .contact-icon {
@@ -751,15 +711,6 @@ h2 {
     z-index: -1;
 }
 
-/* Hover */
-.whatsapp-float:hover {
-    transform: scale(1.1);
-}
-
-.whatsapp-float:hover img {
-    filter: drop-shadow(0 12px 26px rgba(37, 211, 102, 0.8));
-}
-
 /* Tooltip a la izquierda */
 .whatsapp-float::after {
     content: '¡Escríbeme!';
@@ -779,11 +730,6 @@ h2 {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.whatsapp-float:hover::after {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-}
-
 /* Animación del halo */
 @keyframes rippleWhats {
     0%   { transform: scale(1); opacity: 0.6; }
@@ -801,4 +747,92 @@ h2 {
     .whatsapp-float::after {
         display: none;
     }
+}
+
+/* ===== HOVER — SOLO EN DISPOSITIVOS CON MOUSE ===== */
+@media (hover: hover) and (pointer: fine) {
+  .nav-links a:hover {
+    color: #E8501E;
+  }
+
+  .logo-img:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary:hover {
+    color: #E8501E;
+    border-color: #E8501E;
+  }
+
+  .skills span:hover {
+    border-color: #E8501E;
+    color: #E8501E;
+    transform: translateY(-2px);
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232, 80, 30, 0.5);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232, 80, 30, 0.5);
+  }
+
+  .project-link:hover {
+    text-decoration: underline;
+  }
+
+  .contact-details a:hover {
+    border-color: #E8501E;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+  }
+
+  .whatsapp-float:hover img {
+    filter: drop-shadow(0 12px 26px rgba(37, 211, 102, 0.75));
+  }
+
+  .whatsapp-float:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* ===== FEEDBACK AL TOCAR EN MÓVIL ===== */
+.btn-primary:active {
+  transform: scale(0.97);
+  background-color: #C43E15;
+}
+
+.btn-secondary:active {
+  transform: scale(0.97);
+  background-color: rgba(232, 80, 30, 0.15);
+  color: #F58220;
+  border-color: #E8501E;
+}
+
+.skills span:active {
+  border-color: #E8501E;
+  color: #E8501E;
+}
+
+.nav-links a:active {
+  color: #F58220;
+}
+
+.service-card:active,
+.project-card:active {
+  transform: scale(0.98);
+}
+
+.contact-details a:active {
+  border-color: #E8501E;
 }
